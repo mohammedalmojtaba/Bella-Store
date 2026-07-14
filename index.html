@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bella Store Sudan</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- 🌐 Language Selector Button -->
+    <div class="lang-switch-container">
+      <button id="lang-toggle-btn" class="lang-btn">العربية</button>
+    </div>
+
+    <div class="header">
+      <img src="bellastore_logo.png" alt="Bella Store Logo" class="app-logo">
+      <h1 id="app-title">Bella Store</h1>
+      <p id="app-subtitle" class="subtitle">Your International Shopping Agent in Sudan</p>
+    </div>
+
+    <!-- Supported Stores Indicators -->
+    <div class="stores-badge-container">
+      <span class="badge">Shein</span>
+      <span class="badge">Amazon</span>
+      <span class="badge">Alibaba</span>
+      <span class="badge">Trendyol</span>
+    </div>
+
+    <div class="card">
+      <div class="input-group">
+        <label id="label-link" for="product-link">Paste Product Link (Shein, Amazon, Alibaba, or Trendyol)</label>
+        <input type="url" id="product-link" placeholder="https://..." required>
+        <p class="error-msg" id="link-error">Please paste a valid link from a supported store.</p>
+      </div>
+
+      <div class="input-group">
+        <label id="label-price" for="sar-price">Product Price in Saudi Riyal (SAR)</label>
+        <input type="number" id="sar-price" placeholder="e.g., 200" min="1" step="any" required>
+      </div>
+
+      <button id="calculate-btn">Calculate SDG Price</button>
+    </div>
+
+    <!-- Hidden by default, appears after calculation -->
+    <div class="result-card" id="result-card">
+      <p id="result-label" class="result-label">Estimated Total Price (SDG)</p>
+      <h2 id="sdg-total">0.00 SDG</h2>
+      
+      <div id="warning-note" class="warning-note">
+        ⚠️ <strong>Note:</strong> This price represents the product cost only. It does <strong>not</strong> include international shipping or local delivery fees.
+      </div>
+
+      <button id="whatsapp-btn" class="whatsapp-btn">Proceed to Order (WhatsApp)</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

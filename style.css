@@ -1,0 +1,263 @@
+/* ==========================================
+   🌸 BELLA STORE: DUAL-LANGUAGE LUXE EDITION
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  margin: 0;
+  padding: 20px 15px 40px 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: radial-gradient(circle at top, #24111d 0%, #080306 100%);
+  background-attachment: fixed;
+  color: #fff1f2;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🌐 New Floating Language Button Styling */
+.lang-switch-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 154, 158, 0.3);
+  color: #fecfef;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.lang-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 154, 158, 0.15);
+}
+
+/* Header & Glowing Pearl Logo */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-logo {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 182, 193, 0.4);
+  box-shadow: 0 0 25px rgba(255, 154, 158, 0.3);
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  margin: 0 0 5px 0;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: #fda4af;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* Supported Stores Indicators */
+.stores-badge-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 182, 193, 0.15);
+  color: #ffe4e6;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Glassmorphic Cards */
+.card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 154, 158, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #ff9a9e;
+  text-align: left; /* Aligns left for English */
+}
+
+input {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 154, 158, 0.15);
+  background-color: rgba(15, 5, 12, 0.5);
+  color: #ffffff;
+  font-size: 16px; 
+  outline: none;
+}
+
+input:focus {
+  border-color: #ff9a9e;
+  box-shadow: 0 0 15px rgba(255, 154, 158, 0.2);
+  background-color: rgba(15, 5, 12, 0.7);
+}
+
+.error-msg {
+  color: #f87171;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  font-weight: 500;
+  display: none;
+}
+
+/* Luxury Action Button */
+#calculate-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  color: #24111d;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 154, 158, 0.3);
+}
+
+#calculate-btn:active {
+  transform: scale(0.97);
+}
+
+/* Dynamic Result Display Card */
+.result-card {
+  background: rgba(255, 154, 158, 0.04); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 154, 158, 0.35);
+  padding: 24px;
+  border-radius: 24px;
+  text-align: center;
+  display: none;
+  animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-label {
+  color: #fecfef;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+#sdg-total {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff1f2;
+  text-shadow: 0 0 20px rgba(255, 154, 158, 0.4);
+  margin: 12px 0;
+}
+
+/* Soft velvet Warning Note */
+.warning-note {
+  background-color: rgba(251, 113, 133, 0.05);
+  border-left: 3px solid #ff9a9e; /* Left border default for LTR */
+  color: #ffe4e6;
+  padding: 14px;
+  font-size: 0.8rem;
+  text-align: left;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Hot Pink to Coral WhatsApp Action Button */
+.whatsapp-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 117, 140, 0.3);
+}
+
+.whatsapp-btn:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================
+   🇸🇩 ARABIC RIGHT-TO-LEFT (RTL) STYLING ADAPTATIONS
+   ========================================== */
+html[dir="rtl"] label {
+  text-align: right;
+}
+
+html[dir="rtl"] .warning-note {
+  text-align: right;
+  border-left: none;
+  border-right: 3px solid #ff9a9e; /* Shift border layout to the right */
+}
+
+html[dir="rtl"] .lang-switch-container {
+  justify-content: flex-start; /* Switch language button position in RTL */
+}

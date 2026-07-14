@@ -1,0 +1,15 @@
+{
+  "short_name": "BellaStore",
+  "name": "Bella Store - Sudan Orders",
+  "icons": [
+    {
+      "src": "bellastore_logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "display": "standalone",
+  "theme_color": "#0f172a"
+}
