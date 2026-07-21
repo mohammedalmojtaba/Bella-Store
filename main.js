@@ -1,7 +1,7 @@
 // ==========================================
 // ⚙️ CONFIGURATION: CHANGE THE EXCHANGE RATE HERE
 // ==========================================
-const EXCHANGE_RATE = 1500; // 1 SAR = 1600 SDG
+const EXCHANGE_RATE = 1550; // 1 SAR = 1600 SDG
 // ==========================================
 
 const WHATSAPP_NUMBER = "249906044424"; // Your WhatsApp number
