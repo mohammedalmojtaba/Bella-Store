@@ -33,7 +33,12 @@
       <div class="input-group">
         <label id="label-link" for="product-link">Paste Product Link (Shein, Amazon, Alibaba, or Trendyol)</label>
         <input type="url" id="product-link" placeholder="https://..." required>
-        <p class="error-msg" id="link-error">Please paste a valid link from a supported store.</p>
+        
+        <!-- Error message element with bilingual data attributes -->
+        <p class="error-msg" id="link-error" style="display: none;" 
+           data-en="The link has no product. Please paste a specific product link." 
+           data-ar="الرابط لا يحتوي على منتج. يرجى إدخال رابط منتج محدد.">
+        </p>
       </div>
 
       <div class="input-group">

@@ -13,7 +13,7 @@ const translations = {
     subtitle: "Your International Shopping Agent in Sudan",
     labelLink: "Paste Product Link (Shein, Amazon, Alibaba, or Trendyol)",
     placeholderLink: "https://...",
-    errorLink: "Please paste a valid link from a supported store.",
+    errorLink: "The link has no product. Please paste a specific product link.",
     labelPrice: "Product Price in Saudi Riyal (SAR)",
     placeholderPrice: "e.g., 200",
     btnCalculate: "Calculate SDG Price",
@@ -31,9 +31,9 @@ const translations = {
   ar: {
     title: "متجر بيلا",
     subtitle: "وكيلك للتسوق الدولي في السودان",
-    labelLink: "انسخ رابط المنتج (شي إن، أمازون، علي بابا، أو ترينديول)", // ✨ تم التحديث هنا بنجاح!
+    labelLink: "انسخ رابط المنتج (شي إن، أمازون، علي بابا، أو ترينديول)",
     placeholderLink: "https://...",
-    errorLink: "الرجاء إدخال رابط صحيح من المواقع المدعومة.",
+    errorLink: "الرابط لا يحتوي على منتج. يرجى لصق رابط منتج محدد.",
     labelPrice: "سعر المنتج بالريال السعودي (SAR)",
     placeholderPrice: "مثال: 200",
     btnCalculate: "احسب السعر بالجنيه السوداني",
@@ -101,10 +101,11 @@ langToggleBtn.addEventListener('click', () => {
   setLanguage(nextLang);
 });
 
-// App link validation
-function isValidStoreLink(url) {
+// Comprehensive Store & Product Link Validation
+function isValidProductLink(url) {
   const lowercaseUrl = url.toLowerCase();
   
+  // 1. Verify supported store domains
   const isShein = lowercaseUrl.includes('shein');
   const isAmazon = lowercaseUrl.includes('amazon') || 
                     lowercaseUrl.includes('amzn') || 
@@ -113,7 +114,25 @@ function isValidStoreLink(url) {
   const isTrendyol = lowercaseUrl.includes('trendyol') || 
                      lowercaseUrl.includes('ty.gl');
 
-  return (isShein || isAmazon || isAlibaba || isTrendyol);
+  if (!(isShein || isAmazon || isAlibaba || isTrendyol)) {
+    return false;
+  }
+
+  // 2. Verify that it points to an actual product path rather than a homepage/root domain
+  try {
+    const parsedUrl = new URL(url);
+    const path = parsedUrl.pathname;
+    
+    // If path is empty, root ("/"), or a single slash character, it's just a homepage link
+    if (!path || path === '/' || path.length <= 1) {
+      return false;
+    }
+  } catch (e) {
+    // Invalid URL structure
+    return false;
+  }
+
+  return true;
 }
 
 // Price calculation
@@ -121,8 +140,9 @@ calculateBtn.addEventListener('click', () => {
   const url = productLinkInput.value.trim();
   const sarPrice = parseFloat(sarPriceInput.value);
 
-  // Validate Link
-  if (!url || !isValidStoreLink(url)) {
+  // Validate Link (Checks both store support and product path presence)
+  if (!url || !isValidProductLink(url)) {
+    linkError.textContent = translations[currentLang].errorLink;
     linkError.style.display = 'block';
     resultCard.style.display = 'none';
     return;
